@@ -1,0 +1,498 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #6c7279;
+}
+
+li {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+button {
+  border: none;
+}
+
+.container {
+  width: 100%;
+  //container по макету размером 1170px, добавили padding 15px с боков чтобы при адаптиве контент к ним не прижимался. сам container увеличим на 15х2=30px
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/*HEADER
+=======================*/
+.header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  &__inner {
+    min-height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #66697e;
+  }
+
+}
+
+
+/*NAV
+=======================*/
+.nav {
+
+  &__ul {
+    display: flex;
+  }
+
+  &__list:not(:last-child) {
+    margin-right: 60px;
+  }
+
+  &__link {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    opacity: 0.7;
+    transition: opasity .2s linear;
+    }
+
+    &__link:hover {
+      opacity: 1;
+    }
+}
+
+
+/*INTRO
+=======================*/
+.intro {
+  min-height: 750px;
+  padding-top: 100px;
+  background: #313650 url(../img/header-back.jpg) center no-repeat;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__inner {
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 65px;
+    line-height: 1.1;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  &__subtitle {
+    font-size: 22px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 80px;
+  }
+}
+
+
+/*BTN
+=======================*/
+.btn {
+  display: inline-block;
+  font-size: 13px;
+  line-height: 21px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #e84545;
+  border-radius: 2px;
+  //если кнопку сделать не ссылкой а button, то следующие два св-ва помогут избежать различий в оформлении
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .2s linear;
+
+  &--intro {
+    padding: 14px 40px;
+  }
+
+  &--download {
+    padding: 14px 80px;
+  }
+
+  &:hover {
+    background-color: #af1f1f;
+  }
+}
+
+
+/*FEATURES
+=======================*/
+.features {
+  margin: 85px 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    width: 33.33333%;
+    padding: 35px 40px;
+    text-align: center;
+  }
+
+  &__icon {
+    margin-bottom: 30px;
+    width: 60px;
+    height: 60px;
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #2d3033;
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #6c7279;
+    text-align: center;
+  }
+}
+
+
+/*WORKS
+=======================*/
+.works {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    width: 25%;
+    height: 350px;
+    border-bottom: 1px solid #fff;
+    border-right: 1px solid #fff;
+    background-color: #ab7e54;
+    position: relative;
+    //чтобы картинка не выглядывала за границы блока item, т.к. ширина картинки больше--скрыть перекрытия
+    overflow: hidden;
+  }
+
+  &__item:hover &__content {
+    opacity: 1;
+  }
+
+  &__photo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    //позиционируем картинку по центру по оси -X-Y-Z
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(232,69,69,0.9);
+    opacity: 0;
+    transition: opacity 0.3s linear;
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 6px;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #ffffff;
+  }
+}
+
+
+/*TEAM
+=======================*/
+.team {
+  margin: 100px 0 70px 0;
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    //чтобы убрать padding с краев у первого и последнего item в строке
+    margin: 0 -15px;
+  }
+
+  &__item {
+    width: 25%;
+    margin-bottom: 30px;
+    padding: 0 15px 0 15px;
+  }
+
+  &__photo {
+    //чтобы фото могло адаптироваться при уменьшении экрана и блока с фотографией
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  &__name {
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #2d3033;
+    margin-top: 30px;
+  }
+
+  &__prof {
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #e84545;
+    margin-top: 20px;
+  }
+
+  &__text {
+    margin-top: 30px;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+    color: #6c7279;
+    margin-bottom: 30px;
+  }
+}
+
+
+/*SOCIAL
+=======================*/
+.social {
+  display: flex;
+
+  &--footer {
+    justify-content: center;
+  }
+
+  &__link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e8ecee;
+    margin-right: 4px;
+    transition: background .2s linear;
+  }
+
+  //изменить некоторые параметры social__link в родителе social--footer. читается как - если social__link находится в social--footer то изменим ему параметры
+  &--footer &__link {
+    background: none;
+    border-width: 2px;
+    border-color: #fff;
+    border-radius: 2px;
+    transition: background .2s linear;
+  }
+
+  &--footer &__link:hover {
+    background-color: #fff;
+  }
+
+  &--footer &__icon {
+    color: #fff;
+  } 
+
+  &__icon {
+    color: #c6cacc;
+    height: 18px;
+  }
+
+  &__link:hover {
+    background-color: #c6cacc;
+  }
+
+  &__link:hover &__icon {
+    color: #000;
+  }
+}
+
+
+/*REVIEWS
+=======================*/
+.reviews {
+    background-color: #53354a;
+    overflow: hidden;
+
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__photo {
+    width: 50%;
+    height: 500px;
+    position: relative;
+  }
+
+  &__img {
+    position: absolute;
+    right: 0;
+    //если img будет выше чем контейнер photo в 500px, то его нужно выровнять по вертикали по оси Y
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 80px;
+  }
+
+  &__text {
+  font-family: 'Cardo', serif;
+  font-size: 36px;
+  line-height: 1.2;
+  font-weight: 400;
+  font-style: italic;
+  color: #ffffff;
+  margin-bottom: 30px;
+  }
+
+  &__author {
+    font-size: 13px;
+    line-height: 21px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+}
+
+
+/*DOWNLOAD
+=======================*/
+.download {
+  width: 100%;
+  margin: 100px 0;
+  text-align: center;
+
+  &__title {
+    font-size: 28px;
+    line-height: 0.7;
+    font-weight: 300;
+    color: #2d3033;
+    margin-bottom: 15px;
+  }
+
+  &__text {
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #2d3033;
+    margin-bottom: 40px;
+  }
+}
+
+
+/*FOOTER
+=======================*/
+.footer {
+  background-color: #3a3e64;
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 70px 0;
+  }
+
+  &__col {
+    width: 33.3333%;
+    text-align: center;
+    padding: 0 15px;
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 15px;
+  }
+
+  &__address,
+  &__text {
+    font-style: normal;
+    opacity: 0.5;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #ffffff;
+  }
+}
+
+
+.copyright {
+  background-color: #313454;
+  padding: 20px 0;
+  text-align: center;
+
+  &__text {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #808080;
+  }
+
+  &__text_author {
+    color: #ffffff;
+  }
+}
